@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4B9ADF28282D53BF0024FB81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9ADF27282D53BF0024FB81 /* main.swift */; };
+		4B9ADF2F282FDAC20024FB81 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9ADF2E282FDAC20024FB81 /* Fighter.swift */; };
+		4B9ADF31282FE4940024FB81 /* Avarec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9ADF30282FE4940024FB81 /* Avarec.swift */; };
+		4B9ADF36282FE5060024FB81 /* Darginec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9ADF35282FE5060024FB81 /* Darginec.swift */; };
+		4B9ADF38282FE5190024FB81 /* Tabasaranec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9ADF37282FE5190024FB81 /* Tabasaranec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		4B9ADF24282D53BF0024FB81 /* preparation for classes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "preparation for classes"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9ADF27282D53BF0024FB81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4B9ADF2E282FDAC20024FB81 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
+		4B9ADF30282FE4940024FB81 /* Avarec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avarec.swift; sourceTree = "<group>"; };
+		4B9ADF35282FE5060024FB81 /* Darginec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darginec.swift; sourceTree = "<group>"; };
+		4B9ADF37282FE5190024FB81 /* Tabasaranec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabasaranec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				4B9ADF27282D53BF0024FB81 /* main.swift */,
+				4B9ADF2E282FDAC20024FB81 /* Fighter.swift */,
+				4B9ADF30282FE4940024FB81 /* Avarec.swift */,
+				4B9ADF35282FE5060024FB81 /* Darginec.swift */,
+				4B9ADF37282FE5190024FB81 /* Tabasaranec.swift */,
 			);
 			path = "preparation for classes";
 			sourceTree = "<group>";
@@ -121,6 +133,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B9ADF28282D53BF0024FB81 /* main.swift in Sources */,
+				4B9ADF31282FE4940024FB81 /* Avarec.swift in Sources */,
+				4B9ADF38282FE5190024FB81 /* Tabasaranec.swift in Sources */,
+				4B9ADF36282FE5060024FB81 /* Darginec.swift in Sources */,
+				4B9ADF2F282FDAC20024FB81 /* Fighter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
