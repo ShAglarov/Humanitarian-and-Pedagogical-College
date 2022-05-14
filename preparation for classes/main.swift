@@ -7,6 +7,68 @@
 
 import Foundation
 
+ enum Status {
+     case sold
+     case booked
+     case notSold
+     var toString: String {
+         switch self {
+         case .sold:
+             return "продан"
+         case .booked:
+             return "забронирован"
+         case .notSold:
+             return "не продан"
+         }
+     }
+ }
+
+ class testGetSet {
+
+     private var _storeValue: Int
+
+     var storeValue: Int {
+         get {
+             return _storeValue
+         }
+     }
+
+     init(storeValue: Int) {
+         self._storeValue = storeValue
+     }
+ }
+
+ struct testDidSet {
+     var status: Status {
+         didSet {
+             sendNotification(oldStatus: oldValue, newStatus: status)
+         }
+     }
+
+     func sendNotification(oldStatus: Status, newStatus: Status) {
+         print("Статус заказа ранее был \(oldStatus.toString)")
+         print("Сейчас статус заказа \(newStatus.toString)")
+     }
+ }
+
+ struct testDidSetTwo {
+     var status: Status {
+         willSet {
+             oldValueSet(prevStatus: newValue)
+         }
+         didSet {
+             newValueSet(prevStatus: oldValue)
+         }
+     }
+
+         func oldValueSet(prevStatus: Status) {
+             print("Статус заказа ранее был \(status.toString)")
+         }
+     func newValueSet(prevStatus: Status) {
+         print("Статус заказа сейчас \(status.toString)")
+     }
+ }
+
 struct User {
     let name: String
     let age: Int
@@ -59,3 +121,10 @@ let user = User(name: "Shamil", age: 33)
 let anotherOrder = Order(id: nil, discountedPrice: 0, user: user)
 
 print(anotherOrder ?? "it not created")
+
+
+let testGet: testGetSet = testGetSet(storeValue: 5)
+var testDid: testDidSet = testDidSet(status: .notSold)
+
+testDid.status = .sold
+testDid.status = .booked
