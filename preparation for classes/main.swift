@@ -7,55 +7,48 @@
 
 import Foundation
 
-struct User {
-    let name: String
+enum Gender {
+    case male
+    case female
+    
+    var description: String {
+        switch self {
+        case .male: return "male"
+        case .female: return "female"
+        }
+    }
+    var shortDesctiption: String {
+        switch self {
+        case .male:
+                return "m"
+        case .female:
+                return "f"
+        }
+    }
+}
+
+class User {
+    var name: String
     let age: Int
-}
-
-///передаем цену и скидку
-struct Order {
-    let id: String
-    let price: Int
-    let user: User
-    init(
-        id: String,
-         price: Int,
-         discountedPersent: Int,
-         user: User
-        )
-    {
-        self.id = id
-        self.price = (price * discountedPersent) / 100
-        self.user = user
-    }
+    let phone: String
+    let gender: Gender
     
-    ///передаем цену с учетом скидки
-    init(id: String,
-         discountedPrice: Int,
-         user: User
-        )
+    init(name: String,
+         age: Int,
+         phone: String,
+         gender: Gender)
     {
-        self.id = id
-        self.price = discountedPrice
-        self.user = user
-    }
-    
-    init?(id: String?,
-          discountedPrice: Int,
-          user: User
-        )
-    {
-        guard let id = id else { return nil }
-        
-        self.init(id: id,
-                  discountedPrice: discountedPrice,
-                  user: user
-                 )
+        self.name = name
+        self.age = age
+        self.phone = phone
+        self.gender = gender
     }
 }
 
-let user = User(name: "Shamil", age: 33)
+let user = User(name: "Shamil", age: 33, phone: "89882322233", gender: .male)
 
-let anotherOrder = Order(id: nil, discountedPrice: 0, user: user)
+let userTwo = user
 
-print(anotherOrder ?? "it not created")
+
+
+
