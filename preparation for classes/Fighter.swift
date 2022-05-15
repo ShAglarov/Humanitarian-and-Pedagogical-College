@@ -12,11 +12,7 @@ protocol UseUltimateAbility {
     func useUltimateAbility() -> uint32
 }
 
-class Fighter: UseUltimateAbility {
-    
-    func useUltimateAbility() -> uint32 {
-        fatalError("ЭТО ДОЛЖНО БЫТЬ РЕАЛИЗОВАНО В ДОЧЕРНИХ КЛАССАХ")
-    }
+class Fighter {
     
     /// Имя бойца
     var name: String
