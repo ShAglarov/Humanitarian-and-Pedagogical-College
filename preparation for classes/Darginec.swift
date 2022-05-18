@@ -37,8 +37,8 @@ final class Darginec: Fighter, UseUltimateAbility {
         super.init(name: name,
                    classDescription: "Даргинец",
                    ultimateAbilityDescription: "Имеет секретное оружие, но использует очень редко!",
-                   strenght: 5,
-                   agility: 0,
-                   vitality: 5)
+                   strenght: 4,
+                   agility: 1,
+                   vitality: 4)
     }
 }

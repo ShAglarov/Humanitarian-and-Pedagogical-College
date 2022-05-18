@@ -22,7 +22,7 @@ class Lakec: Fighter, UseUltimateAbility {
         super.init(name: name,
                    classDescription: "Лакец",
                    ultimateAbilityDescription: "Обладает невероятной ловкостью, может масстерски уходить от ударов противника",
-                   strenght: 3,
+                   strenght: 4,
                    agility: 0,
                    vitality: 3)
     }

@@ -21,6 +21,6 @@ final class Avarec: Fighter, UseUltimateAbility {
                    ultimateAbilityDescription: "Впадает в ярость, нанеся колоссальный урон противнику",
                    strenght: 5,
                    agility: 0,
-                   vitality: 5)
+                   vitality: 4)
     }
 }

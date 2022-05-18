@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Russkiy: Fighter, UseUltimateAbility {
+final class Tabasaranec: Fighter, UseUltimateAbility {
     
     func useUltimateAbility() -> uint32 {
         var totalDamage: uint16 = uint16.random(in: 1...100)

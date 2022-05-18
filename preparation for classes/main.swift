@@ -18,7 +18,7 @@ func printMenu() {
     
     let option = readLine() ?? "nil"
     
-    let fighter: Fighter = Fighter(name: "Magomed", classDescription: "Avarec", ultimateAbilityDescription: "Проход в ноги", strenght: 6, agility: 0, vitality: 3)
+    let fighter: Fighter = Avarec(name: "Magomed")
     
     switch option {
     case "1":
