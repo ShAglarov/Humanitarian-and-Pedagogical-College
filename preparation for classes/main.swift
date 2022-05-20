@@ -22,7 +22,7 @@ func printMenu() {
     
     switch option {
     case "1":
-        print("Старт Игры ")
+        let _ = Game().startGame()
     case "2":
         print("ПРАВИЛА ИГРЫ")
         fighter.fullShowStats()

@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class Tabasaranec: Fighter, UseUltimateAbility {
+class Tabasaranec: Fighter {
     
-    func useUltimateAbility() -> uint32 {
+    override func useUltimateAbility() -> uint32 {
         var totalDamage: uint16 = uint16.random(in: 1...100)
         if totalDamage < 50 {
             totalDamage = (totalDamage * 10) / 2

@@ -7,8 +7,9 @@
 
 import Foundation
 
-class Lakec: Fighter, UseUltimateAbility {
-    func useUltimateAbility() -> uint32 {
+class Lakec: Fighter {
+    
+    override func useUltimateAbility() -> uint32 {
         let chance = uint8.random(in: 1...100)
         if chance <= 25 {
             let totalDamage = damageFighter * 3

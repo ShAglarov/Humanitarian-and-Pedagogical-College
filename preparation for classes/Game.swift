@@ -28,6 +28,7 @@ final class Game {
     }
     
     func createFighter() -> Fighter {
+        
         print("НАЗОВИТЕ СВОЕГО БОЙЦА")
         
         guard let nameFighter = readLine() else { return createFighter() }
@@ -47,6 +48,7 @@ final class Game {
             print("Вы не выбрали ни одного бойца, начните игру заного!")
             break
         }
+        
         var points: uint16 = 6
         
         while points > 0 {
@@ -96,13 +98,60 @@ final class Game {
     func startFight() {
         while fightState == .NextRound {
             print("------------------------------")
-            
+            print("Для старта \(round)-го раунда, нажмите Enter")
+            _ = readLine()
+            print("РАУНД \(round)")
+            print("------------------------------")
+            playerOne?.fullShowStats()
+            ///методо считает урон каждого бойца и минусует из HP
+            calculateDamage(agressor: playerOne ?? Lakec(name: "nil"), victim: playerTwo ?? Tabasaranec(name: "nil"))
+            if fightState == .StopRound {
+                print("")
+            } else {
+                print("------------------------------")
+                print("------------------------------")
+                print("------------------------------")
+            }
+            playerTwo?.fullShowStats()
+            calculateDamage(agressor: playerTwo ?? Lakec(name: "nil"), victim: playerOne ?? Tabasaranec(name: "nil"))
+            round += 1
         }
+        print("------------------------------")
+        print("------------------------------")
+        print("------------------------------")
+        print("------------------------------")
+        print("------------------------------")
+        print("------------------------------")
     }
     
     func calculateDamage(agressor: Fighter, victim: Fighter) {
         if agressor.isFighterDead {
             win = victim.name
+            print("------------------------------")
+            print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ \(win) НА \(round) РАУНДЕ")
+            fightState = .StopRound
+            return
+        } else if victim.isFighterDead {
+            win = agressor.name
+            print("""
+                    ------------------------------
+                    ------------------------------
+                  
+                  """)
+            print("БОЙ ОКОНЧЕН, ПОБЕДУ ОДЕРЖАЛ \(win) НА \(round) РАУНДЕ")
+            fightState = .StopRound
+            return
+        }
+        var damage: uint16 = 0
+        
+        if victim.dodgeChance > uint16.random(in: 1..<101) {
+            print("\(agressor.name) хотел ударить, но \(victim.name) увернулся от удараю")
+        } else {
+            damage = agressor.kick()
+            victim.hpFighter -= Int16(damage)
+            print("\(agressor.name) ударил и нанес противнику \(damage) урона")
+            victim.hpFighter -= Int16(Int(agressor.useUltimateAbility()))
+            print("\(agressor.name) произвел супер удар и нанес противнику \(agressor.useUltimateAbility()) урона")
         }
     }
 }

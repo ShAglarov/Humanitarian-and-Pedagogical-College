@@ -14,9 +14,9 @@ import Foundation
  получит колоссальный урон и "погибнет" (потерпит поражение)
  */
 
-final class Darginec: Fighter, UseUltimateAbility {
+final class Darginec: Fighter {
     
-    func useUltimateAbility() -> uint32 {
+    override func useUltimateAbility() -> uint32 {
         
         var fighBought: uint32
         

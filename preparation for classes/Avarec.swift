@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class Avarec: Fighter, UseUltimateAbility {
+class Avarec: Fighter {
     
-    func useUltimateAbility() -> uint32 {
+    override func useUltimateAbility() -> uint32 {
         let totalDamage = strenght * 3 + damageFighter
         print("\(name) впадает в ярость! и бьет 3 жестких три удара, нанеся \(totalDamage) урона ")
         return uint32(totalDamage)
