@@ -24,7 +24,7 @@ class Lakec: Fighter {
                    classDescription: "Лакец",
                    ultimateAbilityDescription: "Обладает невероятной ловкостью, может масстерски уходить от ударов противника",
                    strenght: 4,
-                   agility: 0,
-                   vitality: 3)
+                   agility: 5,
+                   vitality: 4)
     }
 }

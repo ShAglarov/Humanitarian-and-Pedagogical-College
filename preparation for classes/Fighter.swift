@@ -29,7 +29,7 @@ class Fighter: UseUltimateAbility {
     let ultimateAbilityDescription: String
     
     /// Урон бойца
-    var damageFighter: uint16 = 0
+    var damageFighter: uint16
     
     private var _strenght: uint16 = 0
     
@@ -40,12 +40,12 @@ class Fighter: UseUltimateAbility {
         }
         set {
             _strenght = newValue
-            damageFighter = _strenght * 100
+            damageFighter = _strenght * 10
         }
     }
     
     /// Шанс увернуться
-    var dodgeChance: uint16 = 0 //исправить
+    var dodgeChance: uint16 = 0
     
     private var _agility: uint16 = 0
     ///Ловкость
@@ -62,10 +62,10 @@ class Fighter: UseUltimateAbility {
     /// Статус бойца Погиб/неПогиб
     var isFighterDead: Bool = false
     
-    private var _hpFighter: Int16 = 0
+    private var _hpFighter: Int32 = 0
     
     /// Количество жизней бойца
-    var hpFighter: Int16 {
+    var hpFighter: Int32 {
         get {
             return _hpFighter
         }
@@ -77,9 +77,18 @@ class Fighter: UseUltimateAbility {
             }
         }
     }
+    private var _vitality = 0
     
     ///живучесть бойца
-    var vitality: uint16
+    var vitality: uint16 {
+        get {
+            return uint16(_vitality)
+        }
+        set {
+            _vitality = Int(newValue)
+            hpFighter = Int32(_vitality * 100)
+        }
+    }
     
     ///Описание дефолтных значений для бойца
     init(name: String,
@@ -92,13 +101,15 @@ class Fighter: UseUltimateAbility {
         self.name = name
         self.classDescription = classDescription
         self.ultimateAbilityDescription = ultimateAbilityDescription
-        self.vitality = vitality
+        self.damageFighter = strenght * 10
         self.agility = agility
         self.strenght = strenght
+        self.vitality = vitality
+        
     }
     
     func kick() -> uint16 {
-        let totalDamage: uint16 = uint16.random(in: damageFighter-50...damageFighter+50)
+        let totalDamage: uint16 = uint16.random(in: damageFighter...damageFighter+50)
         return totalDamage
     }
     

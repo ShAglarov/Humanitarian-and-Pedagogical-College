@@ -20,7 +20,7 @@ class Avarec: Fighter {
                    classDescription: "Аварец",
                    ultimateAbilityDescription: "Впадает в ярость, нанеся колоссальный урон противнику",
                    strenght: 5,
-                   agility: 0,
+                   agility: 1,
                    vitality: 4)
     }
 }

@@ -38,7 +38,7 @@ final class Darginec: Fighter {
                    classDescription: "Даргинец",
                    ultimateAbilityDescription: "Имеет секретное оружие, но использует очень редко!",
                    strenght: 4,
-                   agility: 1,
-                   vitality: 4)
+                   agility: 2,
+                   vitality: 5)
     }
 }

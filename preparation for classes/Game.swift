@@ -145,13 +145,12 @@ final class Game {
         var damage: uint16 = 0
         
         if victim.dodgeChance > uint16.random(in: 1..<101) {
-            print("\(agressor.name) хотел ударить, но \(victim.name) увернулся от удараю")
+            print("\(agressor.name) хотел ударить, но \(victim.name) увернулся от удара")
         } else {
             damage = agressor.kick()
-            victim.hpFighter -= Int16(damage)
+            victim.hpFighter -= Int32(damage)
             print("\(agressor.name) ударил и нанес противнику \(damage) урона")
-            victim.hpFighter -= Int16(Int(agressor.useUltimateAbility()))
-            print("\(agressor.name) произвел супер удар и нанес противнику \(agressor.useUltimateAbility()) урона")
+            victim.hpFighter -= Int32(Int(agressor.useUltimateAbility()))
         }
     }
 }
