@@ -1,85 +1,34 @@
-//
-//  main.swift
-//  preparation for classes
-//
-//  Created by Shamil Aglarov on 12.05.2022.
-//
 
 import Foundation
 
-enum Status: Int {
-    case wait = 1
-    case canseled = 2
-    case took = 3
-}
+let customers = Customer(fio: "Магомедов Арип Курбанович", age: "36", phone:     "89287653317")
+let customersTwo = Customer(fio: "Ильясов Магомед Запирович", age: "32", phone:  "89287654541")
+let customersTree = Customer(fio: "Залкепов Рашид Залкепович", age: "21", phone: "89234342535")
 
-struct User {
-    var name: String
-    var age: Int
-    var phone: String
-    
-    private var statusRawValue: Int?
-    
-    var status: Status? {
-        get {
-            return Status(rawValue: statusRawValue ?? 1)
-        }
-        set {
-            statusRawValue = newValue?.rawValue
-        }
-    }
-    
-    init() {
-        self.name = ""
-        self.age = 0
-        self.phone = ""
-        self.status = .none
-    }
-    
-    init(name: String, age: Int, phone: String) {
-        self.name = name
-        self.age = age
-        self.phone = phone
-        self.status = .wait
-    }
-}
+let orderOne = Order(deviceName: .iPhone12,
+                     idNumber: .fourCharactersID("1", "0", "0", "1"),
+                     price: 80000,
+                     discountPersent: 15,
+                     customers: [customers])
+//второй заказ
+let orderTwo = Order(deviceName: .iPhone13,
+                     idNumber: .fourCharactersID("1", "0", "0", "1"),
+                     price: 80000,
+                     discountPersent: 15,
+                     customers: [customers])
+
+//добавляем покупателя во второй заказ
+orderTwo.addCustomer(customers: customersTwo)
 
 
-struct Order {
-    let id: String
-    let price: Int
-    let discountPersent: Int
-    var users: [User]
-    
-    mutating func ptintAboutOrder() {
-        print("Номер заказа: \(id)")
-        print("Цена товара: \(price)")
-        print("Скидка в процентах: \(discountPersent)")
-    }
-    
-    mutating func addUser(name: String, age: Int, phone: String) {
-        users.append(User(name: name, age: age, phone: phone ))
-    }
-    
-    func printAllUser() {
-        for item in users {
-            print(item)
-        }
-    }
-}
+orderOne.addCustomer(customers: customersTwo)
+orderOne.addCustomer(customers: customersTree)
 
-var user = User()
+customersTwo.status = .took
 
-var order0101 = Order(id: "01", price: 60000, discountPersent: 15, users: [user])
+//orderOne.findCustomerBy(status: .took)
 
-var order0102 = Order(id: "02", price: 80000, discountPersent: 15, users: [user])
+orderTwo.findCustomerBy(status: .took)
 
-order0101.addUser(name: "Magomed", age: 24, phone: "89882039458")
-order0101.addUser(name: "Zaur", age: 24, phone: "89882039458")
-order0101.addUser(name: "Djamal", age: 24, phone: "89882039458")
 
-order0102.addUser(name: "Bilal", age: 32, phone: "89283732277")
-
-//print(order0101.printAllUser())
-print(order0102.printAllUser())
-
+//orderOne.customers.forEach( { print("\($0.fio) - \($0.status.translate)") })
