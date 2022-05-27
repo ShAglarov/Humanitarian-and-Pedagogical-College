@@ -40,21 +40,41 @@ final class Order {
         self.discountPersent = discountPersent
     }
     /// метод доабвляет информацию о покупателях
-    func addCustomer(customers: Customer?) {
-        guard let customers = customers else { print("Покупателей \(deviceName) нет"); return }
-        // инициализируем customers
+    func addCustomer(customers: Customer) {
         self.customers = []
         self.customers?.append(customers)
     }
-    
+    /// Поиск по статусу покупателя
     func findCustomerBy(status: Status) {
         print("Поиск по статусу заказа: \(status.translate) ")
-        guard let customers = customers else { print("Покупателей \(deviceName) нет"); return }
+        guard let customers = customers else {
+            print("Покупателей \(deviceName) нет")
+            return
+        }
         customers.forEach( {
             if $0.status == status {
                 print("ФИО: \($0.fio) ")
                 print("Статус заказа \(deviceName): \($0.status.translate) ")
                 print("-----------------------------------------------------")
+            } else {
+                print("Покупателей \(deviceName) нет")
+            }
+        })
+    }
+    /// Поиск по статусу покупателя
+    func findCustomerBy(phone: String) {
+        print("Поиск по номеру телефона покупателя:")
+        guard let customers = customers else {
+            print("Покупателей \(deviceName) нет")
+            return
+        }
+        customers.forEach( {
+            if $0.phone == phone {
+                print("ФИО: \($0.fio) ")
+                print("Статус заказа \(deviceName): \($0.phone) ")
+                print("-----------------------------------------------------")
+            } else {
+                print("Покупателей \(deviceName) нет")
             }
         })
     }

@@ -24,7 +24,7 @@ orderTwo.addCustomer(customers: customers)
 orderOne.findCustomerBy(status: .wait)
 print("-----------------------------------------------------")
 
-//ищем покупателей iphone 12
+//ищем покупателей iphone 13
 orderTwo.findCustomerBy(status: .wait)
 
 
@@ -32,5 +32,8 @@ orderTwo.findCustomerBy(status: .took)
 
 
 orderTwo.findCustomerBy(status: .canseled)
+
+// поиск по номеру телефона
+orderTwo.findCustomerBy(phone: "89287653317")
 
 print(orderTwo.customers?.count)
