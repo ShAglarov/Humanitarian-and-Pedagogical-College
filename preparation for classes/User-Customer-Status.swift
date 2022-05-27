@@ -23,27 +23,19 @@ enum Status {
     }
 }
 
-class Human {
+
+struct Customer {
+    
     var fio: String
     var age: String
-    
-    init(fio: String, age: String) {
-        self.fio = fio
-        self.age = age
-    }
-}
-
-
-class Customer: Human {
-    
     let phone: String
     var status: Status
     
     init(fio: String, age: String, phone: String) {
+        self.fio = fio
+        self.age = age
         self.phone = phone
         self.status = .wait
-        super.init(fio: fio, age: age)
-        
     }
 }
 

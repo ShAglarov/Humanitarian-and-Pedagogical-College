@@ -2,33 +2,35 @@
 import Foundation
 
 let customers = Customer(fio: "Магомедов Арип Курбанович", age: "36", phone:     "89287653317")
-let customersTwo = Customer(fio: "Ильясов Магомед Запирович", age: "32", phone:  "89287654541")
+var customersTwo = Customer(fio: "Ильясов Магомед Запирович", age: "32", phone:  "89287654541")
 let customersTree = Customer(fio: "Залкепов Рашид Залкепович", age: "21", phone: "89234342535")
 
+//первый заказ iphone 12
 let orderOne = Order(deviceName: .iPhone12,
                      idNumber: .fourCharactersID("1", "0", "0", "1"),
                      price: 80000,
-                     discountPersent: 15,
-                     customers: [customers])
-//второй заказ
+                     discountPersent: 15)
+
+//второй заказ iphone 13
 let orderTwo = Order(deviceName: .iPhone13,
                      idNumber: .fourCharactersID("1", "0", "0", "1"),
                      price: 80000,
-                     discountPersent: 15,
-                     customers: [customers])
+                     discountPersent: 15)
 
-//добавляем покупателя во второй заказ
-orderTwo.addCustomer(customers: customersTwo)
+//добавляем покупателя ihone13 во второй заказ
+orderTwo.addCustomer(customers: customers)
 
+//ищем покупателей iphone 12
+orderOne.findCustomerBy(status: .wait)
+print("-----------------------------------------------------")
 
-orderOne.addCustomer(customers: customersTwo)
-orderOne.addCustomer(customers: customersTree)
+//ищем покупателей iphone 12
+orderTwo.findCustomerBy(status: .wait)
 
-customersTwo.status = .took
-
-//orderOne.findCustomerBy(status: .took)
 
 orderTwo.findCustomerBy(status: .took)
 
 
-//orderOne.customers.forEach( { print("\($0.fio) - \($0.status.translate)") })
+orderTwo.findCustomerBy(status: .canseled)
+
+print(orderTwo.customers?.count)

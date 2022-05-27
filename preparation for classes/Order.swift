@@ -20,7 +20,6 @@ enum Device {
     case macBookPro
 }
 
-
 ///Заказ
 final class Order {
     
@@ -28,27 +27,29 @@ final class Order {
     let idNumber: OrderID
     let price: Int
     let discountPersent: Int
-    var customers: [Customer] = []
+    var customers: [Customer]?
     
     init(deviceName: Device,
          idNumber: OrderID,
          price: Int,
-         discountPersent: Int,
-         customers: [Customer] )
+         discountPersent: Int)
     {
         self.deviceName = deviceName
         self.idNumber = idNumber
         self.price = price
         self.discountPersent = discountPersent
-        self.customers = customers
     }
     /// метод доабвляет информацию о покупателях
-    func addCustomer(customers: Customer) {
-        self.customers.append(customers)
+    func addCustomer(customers: Customer?) {
+        guard let customers = customers else { print("Покупателей \(deviceName) нет"); return }
+        // инициализируем customers
+        self.customers = []
+        self.customers?.append(customers)
     }
     
     func findCustomerBy(status: Status) {
-        print("Поиск по статусу заказа: \(status) ")
+        print("Поиск по статусу заказа: \(status.translate) ")
+        guard let customers = customers else { print("Покупателей \(deviceName) нет"); return }
         customers.forEach( {
             if $0.status == status {
                 print("ФИО: \($0.fio) ")
