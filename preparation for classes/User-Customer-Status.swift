@@ -23,19 +23,22 @@ enum Status {
     }
 }
 
-
+// покупатель (статус waite является default)
 struct Customer {
     
     var fio: String
     var age: String
-    let phone: String
+    var phone: String
     var status: Status
+   // var idCustomer: String
+    
     
     init(fio: String, age: String, phone: String) {
         self.fio = fio
         self.age = age
         self.phone = phone
         self.status = .wait
+       // self.idCustomer = fio.components(separatedBy: " ").
     }
 }
 
