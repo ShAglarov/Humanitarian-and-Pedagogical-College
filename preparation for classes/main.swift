@@ -7,58 +7,49 @@
 
 import Foundation
 
-protocol UsersProtocol {
-    var name: String { get set }
-    var age: Int { get set }
-    
-    var delegat: RecordHistoryDelegate? { get set }
-    
-    func sendMessage(name: String, text: String)
-    
-    init(name: String, age: Int, delegate: RecordHistoryDelegate?)
+protocol elevatorDelegate {
+    func cookOrder(_ order: String)
 }
-class User: UsersProtocol {
-    
-    var name: String
-    var age: Int
-    
-    var delegat: RecordHistoryDelegate?
-    
-    func sendMessage(name: String, text: String) {
-        delegat?.saveMessage(name: name, text: text)
-        print("отправлено по адресату: \(name)")
-    }
-    
-    required init(name: String, age: Int, delegate: RecordHistoryDelegate?) {
-        self.name = name
-        self.age = age
-        self.delegat = delegate
+
+//оффициант
+class Waiter {
+    ///заказ
+    var order: String?
+    // принять заказ
+    func takeOrder() {
+        print("Что вы будете Сэр!")
+        let clientOrdersFood = readLine()
+        guard let clientOrdersFood = clientOrdersFood else { return }
+        print("Вы заказали \(clientOrdersFood) - ваш заказ принят.")
+        order = clientOrdersFood
     }
 }
 
-protocol RecordHistoryDelegate {
-    var entryHistory: [String] { get set }
-    func saveMessage(name: String, text: String)
-}
-
-class RecordMessageHistory: RecordHistoryDelegate {
-    var entryHistory: [String] = []
+//повар
+class Cook {
     
-    func saveMessage(name: String, text: String) {
-        entryHistory.append(name)
-        entryHistory.append(text)
+    func cookFood(_ order: String) {
+        print("Повар: - я получил заказ - \(order)")
+        print("Повар: - \(order) - готова!")
     }
 }
 
-let recordingDevice = RecordMessageHistory()
+extension Cook: elevatorDelegate {
+    func cookOrder(_ order: String) {
+        cookFood(order)
+    }
+}
 
-let user = User(name: "Ильясов Магомед", age: 21, delegate: recordingDevice)
-let userTwo = User(name: "Нуралиев Ислам", age: 17, delegate: recordingDevice)
+extension Waiter {
+    var elevator: elevatorDelegate? {
+        return cook
+    }
+}
 
-user.sendMessage(name: userTwo.name, text: "Салам Алейкум")
-userTwo.sendMessage(name: user.name, text: "Ваалейкум Салам")
-user.sendMessage(name: userTwo.name, text: "Что делаешь?")
-userTwo.sendMessage(name: user.name, text: "Сижу дома, собираюсь спать")
+let waiter = Waiter()
 
-//print(user.delegat?.entryHistory)
-print(userTwo.delegat?.entryHistory)
+let cook = Cook()
+
+waiter.takeOrder()
+
+waiter.elevator?.cookOrder(waiter.order!)
