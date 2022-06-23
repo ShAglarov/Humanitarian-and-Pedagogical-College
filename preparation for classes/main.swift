@@ -9,23 +9,33 @@ import Foundation
 
 //структура сохраняет словарь из ключей и их значений
 
-struct Storage<T> {
-    var elements: [String : T] = [:]
+protocol StorageIdentifiable {
+    var id: String { get }
+    var nameBook: String { get }
+}
+
+struct Storage<T: StorageIdentifiable> {
+    var elements: [String: T] = [:]
     
-    mutating func setElement(_ key: T, for element: String) {
-        elements[element] = key
+    mutating func setElement(_ element: T) {
+        elements[element.id] = element
     }
-    mutating func getElement(for key: String) -> T? {
-        return elements[key]
+    func getElement(by id: String) -> T? {
+        return elements[id]
     }
 }
 
-var storage = Storage<Int>()
+struct Book: StorageIdentifiable {
+    var id: String
+    var nameBook: String
+}
 
-storage.setElement(1, for: "Книга Усова по Swift")
-storage.setElement(2, for: "Книга Усова по C#")
-storage.setElement(3, for: "Книга Усова по Piton")
+let book = Book(id: "01", nameBook: "Swift Development")
+let bookTwo = Book(id: "02", nameBook: "C# Development")
+let bookThree = Book(id: "03", nameBook: "Piton Development")
 
-let printElement = storage.getElement(for: "Книга Усова по C#")
+var storage = Storage<Book>()
 
-print(printElement)
+storage.setElement(bookTwo)
+
+print(storage.getElement(by: "02"))
